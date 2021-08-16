@@ -1,0 +1,317 @@
+/*
+
+-------------- Comando do SASS:
+
+1) sass --watch Styles/style.scss Styles/style.css
+2) ctrl+c para sair
+
+-------------- Passos para dar commit no github:
+
+1) git init
+2) git checkout -b "nomeDoNovoBranch"
+3) git add .
+4) git commit -m "header-css-done"
+5) git push origin nomeDoNovoBranch
+6) git checkout master
+7) git pull 
+8) git branch -D nomeDoNovoBranch
+9) ### Voltar para a etapa 2 ###
+
+*/
+
+/*-----------------------------------------------------------
+----------------Resetando os estilos do HTML-----------------
+-----------------------------------------------------------*/
+
+* {
+    padding: 0px;
+    margin: 0px;
+  }
+  body {
+    font-family: "Arial", Georgia, serif;
+    background-color: rgb(228, 225, 225);
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  img {
+    width: 10%;
+    border-radius: 5px;
+  }
+
+  /*-----------------------------------------------------------
+-------------------------GRID----------------------------
+-----------------------------------------------------------*/
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      "header header header"
+      ". main ."
+      ". sobre ."
+      ". imagens ."
+      "footer footer footer"
+     ;
+  }
+  
+    /*-----------------------------------------------------------
+-------------------------HEADER----------------------------
+-----------------------------------------------------------*/
+
+.header {
+    grid-area: header;
+   
+}
+.header ul {
+    position: fixed;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    width: 100%;
+    background-image: linear-gradient(45deg, #8eda36 0, #7ad839 16.67%, #63d63d 33.33%, #45d442 50%, #03d148 66.67%, #00cf4e 83.33%, #00cd56 100%);
+}
+.header a {
+    padding:0px 2em 0px 2em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    background-image: linear-gradient(270deg, #eb821e 0, #ed781e 25%, #ee6d1f 50%, #ef6121 75%, #f05525 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: pisca 3s infinite;
+}
+.header img {
+    width: 5%;
+    min-width: 30px;
+    min-height: 30px;
+    height: 90px;
+    transform: rotate(90deg);
+    animation: go-back 10s reverse infinite, pisca1 1s infinite;
+    margin-top: 2%;
+    
+}
+@keyframes go-back {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0), rotate(90deg);
+    }
+}
+@keyframes pisca1 {
+    from {
+  opacity: 1;
+    }
+    to {
+ opacity: 0;
+ 
+    }
+}
+   @keyframes pisca {
+       from {
+        background-image: linear-gradient(270deg, #eb821e 0, #ed781e 25%, #ee6d1f 50%, #ef6121 75%, #f05525 100%);
+       }
+       to {
+        background-image: linear-gradient(270deg, #f0443b 0, #ef343f 25%, #ee1f43 50%, #ec0048 75%, #ea004d 100%);
+       }
+   }
+
+.header a:active {
+    color: yellow;
+}
+.header li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    margin-left: 1%;
+    
+}
+.header li:hover {
+    background-color: hsla(0, 0%, 4%, 0.11);
+    border-radius: 8px;
+    transform: scale(1.1);
+}
+    /*-----------------------------------------------------------
+-------------------------MAIN----------------------------
+-----------------------------------------------------------*/
+
+.main {
+    grid-area: main;
+}
+
+.main-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    width: 100%;
+}
+
+.main-perfil img {
+    width: 50%;
+    border:1px solid mediumblue;
+    animation: neon 1s alternate infinite ease-in-out;
+}
+
+.main-perfil img:hover {
+    transition: 1s;
+    transform: rotate(10deg)
+}
+
+.main-perfil-text {
+    margin-top: 3%;
+    animation: neon 1s alternate infinite ease-in-out;
+}
+
+@keyframes neon {
+  from {
+    filter: drop-shadow(0 0 0 #44ee69);
+    color: black;
+  }
+  to {
+    filter: drop-shadow(0 0 60px #44ee60);
+    color: chartreuse;
+  }
+}
+.main-perfil h4 {
+ font-family: italic;
+}
+.main-perfil h3 {
+    margin-left: 35%;
+    font-size: 28px;
+    width: 100%;
+}
+  
+
+    /*-----------------------------------------------------------
+-------------------------SOBRE----------------------------
+-----------------------------------------------------------*/
+
+.sobre {
+    grid-area: sobre;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4%;
+        
+ animation: swirl-in-fwd 0.6s ease-out both;
+    
+}
+
+  @keyframes swirl-in-fwd {
+    0% {
+      -webkit-transform: rotate(-540deg) scale(0);
+              transform: rotate(-540deg) scale(0);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotate(0) scale(1);
+              transform: rotate(0) scale(1);
+      opacity: 1;
+    }
+  }
+  
+.sobre-table {
+    width: 20%;
+    background-color: green;
+    height: 150px;
+}
+.sobre-table:hover {
+    transition: 1s;
+    transform:scale(1.5)
+}
+
+.sobre-tittle {
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+ 
+    
+}
+
+.sobre-asw {
+    font-weight: bold;
+    background-color: greenyellow;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+.sobre-resp {
+    font-family: italic;
+    font-size: 20px;
+    background-color: rgb(39, 90, 42);
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+
+  /*-----------------------------------------------------------
+-------------------------IMAGENS----------------------------
+-----------------------------------------------------------*/
+
+.imagens {
+    grid-area: imagens;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.imagens img{
+    margin-top: 30px;
+    width: 100%;
+    height: 200px;
+    border:1px solid black;
+    animation: neon1 1s alternate infinite ease-in-out;
+}
+
+@keyframes neon1 {
+  from {
+    filter: drop-shadow(0 0 0 #44ee69);
+
+  }
+  to {
+    filter: drop-shadow(0 0 60px #44ee60);
+     transform: scale(1.15);
+  }
+}
+.imagens-itens {
+    margin-right: 10px;
+}
+
+  /*-----------------------------------------------------------
+-------------------------FOOTER----------------------------
+-----------------------------------------------------------*/
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+    margin-bottom: 30px;
+}
+.footer h4 {
+ animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    
+}
+
+  @keyframes text-focus-in {
+    0% {
+      -webkit-filter: blur(12px);
+              filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  
